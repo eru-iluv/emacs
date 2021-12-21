@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# condition: 'auto
+# name: dintegral
+# key: dint
+# group: math
+# --
+
+\int^{${2:b}}_{${3:a}}${1:f(x)}\mathrm{d}x$0

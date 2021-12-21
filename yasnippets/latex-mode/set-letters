@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: sets-letters
+# condition: (and (texmathp) 'auto)
+# key: 's
+# --
+
+\mathbb{ $1} $0

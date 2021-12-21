@@ -1,0 +1,16 @@
+*shell/
+*elpa/
+*evil/
+*games*
+recentf*
+var*
+*dat
+*auto*
+.last-package-update-day*
+custom*
+etc*
+org-roam-ui/
+*cache
+*pdf
+ltximg*
+*db

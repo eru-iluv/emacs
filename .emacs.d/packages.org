@@ -1,0 +1,16 @@
+#+TITLE: Emacs Configurations
+* Packages
+ |----------------------+---------------------+----------------+--------------------|
+ | Appearence           | Navigation          | Writing        | Other              |
+ |----------------------+---------------------+----------------+--------------------|
+ | cherry-blossom-theme | evil                |                | graphviz-dot-mode  |
+ | almost-mono-themes   | dired-open          | org-mode       | latex-preview-pane |
+ | mood-line            | dired-hide-dotfiles | auctex         | real-auto-save     |
+ | org-bullets          | swiper              | flycheck       | multi-term         |
+ | default-text-scale   | ace-window          | auto-complete  | elcord             |
+ | rainbow-delimiters   | try                 | auctex-latexmk |                    |
+ |                      | flymake             | counsel        |                    |
+ |                      | which-key           |                |                    |
+ |                      | dired-sidebar       |                |                    |
+ |                      | yasnippet           |                |                    |
+ |----------------------+---------------------+----------------+--------------------|

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-20 sáb 00:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lagrangianas</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Edgard Macena Cabral" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Lagrangianas</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1d04151">1. Resumo</a></li>
+<li><a href="#orgfad9709">2. Coordenadas generalizadas e graus de liberdade</a>
+<ul>
+<li><a href="#org7847619">2.1. Outras definições</a></li>
+</ul>
+</li>
+<li><a href="#org57fda62">3. Leis de conservação</a></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org1d04151" class="outline-2">
+<h2 id="org1d04151"><span class="section-number-2">1</span> Resumo</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Vimos nas aulas anteriores que a análise do princío de Hamilton fornecia as equações de movimento em qualquer coordenadas
+</p>
+
+<p>
+Vimos ainda que para a equação
+</p>
+
+\begin{equation}
+ H = T - V
+\end{equation}
+
+<p>
+Obtemos, através de Euler-Lagrange
+</p>
+
+\begin{equation}\label{eq:Euler-Lagrange}
+\frac{dH}{d\mathbf{r}} - \frac{d}{dt}\left(\dfrac{dH}{d\mathbf{\dot{r}}}\right) = 0
+\end{equation}
+
+<p>
+Nos fornece as equações do momento e força generalizados (angular e linear)
+Façamos um resumo sobre quando devemos usar multiplicadores de Lagrange no
+formalismo Lagrangiano
+</p>
+
+<p>
+O ponto de partida deve ser observar que o formalismo de lagrange está
+baseado no princípio de Hamilton. Por sua vez, vimos que se não há vínculos
+entre as coordenadas e o movimento, podemos aplicar de maneira simples Euler
+Lagrange. Se houver vínculos
+</p>
+
+<p>
+Portano, vemos que o uso de multiplicadores de Lagrange depende do funcional
+L (Lagrangiano) ser função de variáveis que tem vínculos entre si.
+</p>
+
+<p>
+Podemos ainda generalizar o que vimos até agora para <i>N</i> párticulas
+</p>
+
+<p>
+Tendo a revisão feita, vamos partir pra generalização para qualquer
+coordenada.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgfad9709" class="outline-2">
+<h2 id="orgfad9709"><span class="section-number-2">2</span> Coordenadas generalizadas e graus de liberdade</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Dizemos que \(q_1, q_2, ..., q_n\) é um conjunto de <i>coordenadas generalizadas</i> se
+a posição de toda partícula do sistema é uma função dessas variáveis
+</p>
+
+\begin{equation}\label{eq:coordenadas generalizadas}
+\mathbf{r_i} = \mathbf{r_i}(q_1, q_2, ..., q_n)
+\end{equation}
+
+<p>
+em que \(\mathbf{r_i}\) é a i-ésima coordenada
+</p>
+
+<ul class="org-ul">
+<li><p>
+Pendulo simples
+\(\mathbf{r} = \mathbf{r}(x,y)\)
+\(\mathbf{r} = \mathbf{r}(\theta)\)
+</p>
+
+<p>
+São ambas coordenadas generalizadas de \(\mathbf{r}\)
+</p></li>
+</ul>
+
+<p>
+O número de graus de liberdade de um sistema é dado pelo número de
+coordenadas que podem variar independentemente
+</p>
+
+<p>
+Se o número de coordenadas generalizadas é igual ao de graus de liberdade, o
+conjunto é chamado de próprio
+</p>
+</div>
+<div id="outline-container-org7847619" class="outline-3">
+<h3 id="org7847619"><span class="section-number-3">2.1</span> Outras definições</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Sistema holonômico:
+Sistema no qual as equações de vínculo podem ser usadas pra eliminar
+algumas coordenadas, reduzindo-se o número total de coordenadas. Vinculos
+do tipo \(g(\{q_i\},t = 0)\) são holonômicos</li>
+<li><p>
+Sistema forçado
+Se a eliminação de coordenadas introduzir funções explícitoas do tempo, o
+sistema é dito forçado, se os vínculos são tais que que \(\mathbf{r}\)
+não depende explicitamente de \(t\), o sistema é dito <b>natural</b>
+</p>
+
+<p>
+Se o sistema for natural, \(T\) é a soma de das energias cinéticas devido as
+energias cinéticas generalizadas, apenas com termos quadráticos.
+</p></li>
+</ul>
+
+<p>
+Vamos agora determinar as equações de movimento em termos de coordenadas
+generalizadas.
+</p>
+
+<p>
+Se \(\{q_i\}\) for um conjunto próprio, e o sistema tiver \(s\) <span class="underline">graus de liberdade</span>
+</p>
+
+  \begin{equation}
+equação
+  \end{equation}
+
+<p>
+Obtivemos tal resultado considerando:
+</p>
+<ol class="org-ol">
+<li>As forças consideradas até agora são todas conservativas ou de vínculo</li>
+<li>Os vínculos usados até aqui são todos holonômicos</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57fda62" class="outline-2">
+<h2 id="org57fda62"><span class="section-number-2">3</span> Leis de conservação</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Observe que se uma coordenada própria não aparecer explicitamente na
+lagrangiana, equação para essa coordenada sera
+</p>
+
+  \begin{equation}
+\frac{\partial L}{\partial q_{\alpha}} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}} \right) = 0
+  \end{equation}
+
+<p>
+Temos então
+</p>
+ \begin{equation}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}}\right) = 0
+ \end{equation}
+<p>
+Que é uma constante do movimento
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Edgard Macena Cabral</p>
+<p class="date">Created: 2021-11-20 sáb 00:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

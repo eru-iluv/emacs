@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       fbd4bf04-6624-4f30-925b-3cbf1ce6c81f
+:END:
+#+title: Termodinâmica
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org_header.org
+
+
+

@@ -1,0 +1,48 @@
+#+BEGIN_COMMENT
+  Latex packages
+#+END_COMMENT
+#+LATEX_HEADER: \usepackage{blindtext}
+#+LATEX_HEADER: \usepackage{subcaption}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage{amsmath, amsfonts, amssymb}
+#+LATEX_HEADER: \usepackage{multicol}
+#+LATEX_HEADER: \usepackage{gensymb}
+#+LATEX_HEADER: \usepackage{cancel}
+#+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \usepackage{colortbl,hhline}
+#+LATEX_HEADER: \usepackage[brazil]{babel}
+#+LATEX_HEADER: \usepackage[numbers]{natbib}
+#+LATEX_HEADER: \usepackage{indentfirst}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{siunitx}
+#+LATEX_HEADER: \usepackage{chemfig}
+#+LATEX_HEADER: \usepackage[backend=bibtex,bibencoding=ascii,style=chem-angew,citestyle=numeric-comp,sorting=none]{biblatex}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{arrows}
+#+LATEX_HEADER: \usepackage[controls]{animate}
+#+LATEX_HEADER: \usepackage{color}
+#+LATEX_HEADER: \usepackage{epigraph}
+#+LATEX_HEADER: \usepackage{empheq}
+#+LATEX_HEADER: \usepackage{indentfirst}
+#+LATEX_HEADER: \usepackage[theorems,skins]{tcolorbox}
+#+LATEX_HEADER: \usepackage[svgnames]{xcolor}
+#+LATEX_HEADER: \usepackage[explicit]{titlesec}
+#+LATEX_HEADER: \usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+#+LATEX_HEADER: \usepackage{physics}
+#+LATEX_HEADER: \usepackage[svgnames]{xcolor}
+#+LATEX_HEADER: \usepackage{framed}
+#+BEGIN_COMMENT
+Load all latex at startup
+#+END_COMMENT
+
+#+LATEX_HEADER: \DeclareMathOperator{\sen}{sen}
+
+#+LATEX_HEADER: \usepackage[margin=0.8in]{geometry}
+
+
+#+LATEX_HEADER: \titleformat{\section}{\Large\bfseries}{\thesection}{2.5em}{}
+#+LATEX_HEADER: \titlespacing{\section}{0em}{1.5em}{1.5em}
+
+#+LATEX_HEADER: \titleformat{\subsection}{\large\bfseries}{\thesection}{2.5em}{}[\hrule]
+#+LATEX_HEADER: \titlespacing{\section}{0em}{1.5em}{1.5em}

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: partial derivative
+# key: pdd
+# condition: (and (texmathp) 'auto)
+# group: math
+# --
+
+\pdv{ $1 }{ ${2:x} } $0

@@ -1,0 +1,149 @@
+% Created 2021-11-25 qui 12:08
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{subcaption}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{colortbl,hhline}
+\usepackage[brazil, english]{babel}
+\usepackage[numbers]{natbib}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{chemfig}
+\usepackage[backend=bibtex,bibencoding=ascii,style=chem-angew,citestyle=numeric-comp,sorting=none]{biblatex}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[controls]{animate}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage{empheq}
+\usepackage{indentfirst}
+\usepackage[theorems,skins]{tcolorbox}
+\usepackage[svgnames]{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+\usepackage{physics}
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\DeclareMathOperator{\sen}{sen}
+\usepackage[margin=0.8in]{geometry}
+\titleformat{\section}{\Large\bfseries}{\thesection}{2.5em}{}
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\titleformat{\subsection}{\large\bfseries}{\thesection}{2.5em}{}[\hrule]
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\author{Edgard Macena Cabral}
+\date{\today}
+\title{Modos normais}
+\hypersetup{
+ pdfauthor={Edgard Macena Cabral},
+ pdftitle={Modos normais},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+
+\section{Uma introdução}
+\label{sec:org9d342e2}
+
+Antes de estabelecer a base do problema geral de oscilações acopladas,
+façamos a análise de um exemplo simples.
+
+Se \(x_{1}\) e \(x_{2}\) forem o deslocamentos do sistemam, sabemos que
+\[
+T  = \frac{1}{2}M(\dot{x}_{1}^{2} + \dot{x}_{2}^{2})
+\]
+e
+\[
+V = \frac{kx_{1}^{2}}{2} + \frac{kx_{2}^{2}}{2} + \frac{\kappa (x_{1} - x_{2})^2}{2} 
+\]
+
+Pela equações \href{20211123091021-lagrangiana.org}{Lagrangiana}, temos
+\begin{align}
+  M\ddot{x}_{1} \\
+  M\ddot{x}_{2} + kx_{2} -\kappa (x_{1} - x_{2}) 
+\end{align}
+
+Façamos \(x_{j} = \Re(z_{j}) = B_{j}e^{i \omega t}\)
+Temos:
+\[\begin{cases}
+(k + \kappa - M \omega^{2})B_{1} - \kappa B_{2} &= 0\\
+-\kappa B_{1} + (k + \kappa - M \omega^{2})B_{2} &= 0
+\end{cases}\]
+Soluções não triviais implicam no determinante desse sistema ser diferente
+de 0. Para isso, temos
+\begin{align}
+  (k + \kappa - M\omega^{2})^{2} -&\kappa^{2} = 0 \Rightarrow \omega^{2} = \frac{k + \kappa \pm \kappa }{M}\\
+  &\omega_{a}^{2} = \frac{k + 2\kappa}{M} \mbox{ e } \omega_{b}^{2} = \frac{k}{M}
+\end{align}
+
+Para \(\omega = \omega_b \Rightarrow B_{1} = B_{2}\)
+Já para \(\omega = \omega_a \Rightarrow B_1 = -B_2\)
+
+$$\boxed{ \mbox{Nota: A nossas icógnitas aqui são } B_{a}^{\pm} \mbox{ e } B_{b}^{\pm} }$$
+
+E assim resolvemos nosso problema em termo de \(x_{1} \mbox{ e } x_{2}\) e suas
+derivadas.
+ 
+\[\begin{cases}
+  M\ddot{z}_{1} + (k + \kappa)z_{1} - \kappa z_{2} &= 0\\
+  M\ddot{z}_{2} + (k + \kappa)z_{2} - \kappa z_{1} &= 0
+\end{cases}\]
+ 
+Ao somar e subtrair ambas as equações
+
+\(M(\ddot{z}_{1} \pm \ddot{z}_{2}) + (k + \kappa)(\ddot{z}_{1} \pm \ddot{z}_{2}) - \kappa(z_{2}
+\pm z_{1})\)
+
+Fazendo
+
+\begin{align}
+\gamma_{a} &\equiv z_{1} - z_{2} \\
+\gamma_{b} &\equiv z_{1} + z_{2}
+\end{align}
+
+Assim:
+\[\begin{cases}
+ M\ddot{\gamma_{a}} + (k + 2\kappa)\gamma_{a} = 0\\
+ M\ddot{\gamma}_{b} + k\gamma_{b} = 0 
+\end{cases}\]
+O que nos dá as equações desacopladas cujas equações são independentes
+
+\begin{align}
+  \gamma_{a} = C_{1}^{+ } e^{i\omega_{a}t} + C_{1}^{-}e^{-i\omega_{a}t}\\ 
+  \gamma_{b} = C_{2}^{+} e^{i\omega_{a}t} + C_{2}^{-}e^{-i\omega_{a}t}
+\end{align}
+
+Embora isso seja \emph{bemmmm} mais simples, ela tem a desvantagem de não ser a
+solução dos corpos separados. Perceba que \(\gamma_{a} = 0\) para qualquer \(t\), \(x_{1}
+= x_{2}\) e as distâncias entre as massas permanece a mesma, é simétrica. Já para \(\gamma_{b} = 0\), \(x_{1} = -x_{2}\) e o
+movimento é anti-simétrico.
+
+\section{Generalizando o problema}
+\label{sec:org03829cc}
+\end{document}

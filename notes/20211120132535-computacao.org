@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       5fc966c9-f520-43ec-b32d-b641a60b22d9
+:END:
+#+title: Computação
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/edgard/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/edgard/.emacs.d/setup-files/org_header.org
+
+
+
+Aqui vai ser os nodes de computação
+
+ 
+\( \sen\qty(\dfrac{10}{10})  \) 
+\(\arccos() \cos() \tan()  \int^{b}_{a}f(x)\mathrm{d}x 
+\) 

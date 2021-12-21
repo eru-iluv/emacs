@@ -1,0 +1,36 @@
+* major modes
+** org [0%]
+  - [ ] latex fragments background transparency
+  - [ ] org-ref
+  - [ ] org-babel configure languages
+  - [ ] try to replicate [[https://castel.dev/post/lecture-notes-2/][this]]
+  - [ ] find a way to create variables *in* the current =org= in a easy way
+
+    I'll use this when writing.
+** org-roam [0%] 
+  - [ ] org-roam and org-ref integration
+** projectile [0%]
+  - [ ] configure projects directory
+  - [ ] define shortcuts
+** treemacs [0%]
+  - [ ] define better keybindings
+  - [ ] refresh 
+* minor modes
+** vterm [0%]
+   - [ ] install and basic config
+   - [ ] use the =~/.inputrc= configs.
+   - [ ] check the =julia= REPL.
+* programming
+** language server protocol [0%]
+   - [ ] C++
+   - [ ] C
+   - [ ] fortran
+   - [ ] gnuplot (maybe this does not exists)
+** debugger [0%]
+   - [ ] test dap-mode
+** compilation [0%]
+   - [ ] create structure templates for C/C++ compilation
+* writing
+** TODO find a spell check tool
+** LaTex [0%]
+   - [ ] remove =.log=, =.out=... files after compilation

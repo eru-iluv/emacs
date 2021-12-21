@@ -1,0 +1,104 @@
+#+TITLE: Lagrangianas
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org_header.org
+
+
+
+* Resumo
+  Vimos nas aulas anteriores que a análise do princío de Hamilton fornecia as equações de movimento em qualquer coordenadas
+
+  Vimos ainda que para a equação
+
+\begin{equation}
+ H = T - V
+\end{equation}
+
+  Obtemos, através de Euler-Lagrange
+  
+\begin{equation}\label{eq:Euler-Lagrange}
+\frac{dH}{d\mathbf{r}} - \frac{d}{dt}\left(\dfrac{dH}{d\mathbf{\dot{r}}}\right) = 0
+\end{equation}
+
+  Nos fornece as equações do momento e força generalizados (angular e linear)
+  Façamos um resumo sobre quando devemos usar multiplicadores de Lagrange no
+  formalismo Lagrangiano
+
+  O ponto de partida deve ser observar que o formalismo de lagrange está
+  baseado no princípio de Hamilton. Por sua vez, vimos que se não há vínculos
+  entre as coordenadas e o movimento, podemos aplicar de maneira simples Euler
+  Lagrange. Se houver vínculos
+
+  Portano, vemos que o uso de multiplicadores de Lagrange depende do funcional
+  L (Lagrangiano) ser função de variáveis que tem vínculos entre si.
+
+  # Checar aula sobre multiplicadores de Lagrange
+
+  Podemos ainda generalizar o que vimos até agora para /N/ párticulas
+
+  Tendo a revisão feita, vamos partir pra generalização para qualquer
+  coordenada.
+  
+  
+* Coordenadas generalizadas e graus de liberdade
+  Dizemos que $q_1, q_2, ..., q_n$ é um conjunto de /coordenadas generalizadas/ se
+  a posição de toda partícula do sistema é uma função dessas variáveis
+
+  \begin{equation}\label{eq:coordenadas generalizadas}
+  \mathbf{r_i} = \mathbf{r_i}(q_1, q_2, ..., q_n)
+  \end{equation}
+
+  em que $\mathbf{r_i}$ é a i-ésima coordenada
+
+  - Pendulo simples
+    $\mathbf{r} = \mathbf{r}(x,y)$
+    $\mathbf{r} = \mathbf{r}(\theta)$
+
+    São ambas coordenadas generalizadas de $\mathbf{r}$
+
+  O número de graus de liberdade de um sistema é dado pelo número de
+  coordenadas que podem variar independentemente
+
+  Se o número de coordenadas generalizadas é igual ao de graus de liberdade, o
+  conjunto é chamado de próprio
+** Outras definições
+   - Sistema holonômico:
+     Sistema no qual as equações de vínculo podem ser usadas pra eliminar
+     algumas coordenadas, reduzindo-se o número total de coordenadas. Vinculos
+     do tipo $g(\{q_i\},t = 0)$ são holonômicos
+   - Sistema forçado
+     Se a eliminação de coordenadas introduzir funções explícitoas do tempo, o
+     sistema é dito forçado, se os vínculos são tais que que $\mathbf{r}$
+     não depende explicitamente de $t$, o sistema é dito *natural*
+     
+     Se o sistema for natural, $T$ é a soma de das energias cinéticas devido as
+     energias cinéticas generalizadas, apenas com termos quadráticos.
+
+  Vamos agora determinar as equações de movimento em termos de coordenadas
+  generalizadas.
+
+  Se $\{q_i\}$ for um conjunto próprio, e o sistema tiver $s$ _graus de liberdade_
+
+  \begin{equation}
+equação
+  \end{equation}
+
+  Obtivemos tal resultado considerando:
+  1) As forças consideradas até agora são todas conservativas ou de vínculo
+  2) Os vínculos usados até aqui são todos holonômicos
+
+* Leis de conservação
+  Observe que se uma coordenada própria não aparecer explicitamente na
+  lagrangiana, equação para essa coordenada sera
+
+  \begin{equation}
+\frac{\partial L}{\partial q_{\alpha}} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}} \right) = 0
+  \end{equation}
+
+  Temos então
+  \begin{equation}
+ \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}}\right) = 0
+  \end{equation}
+  Que é uma constante do movimento
+  

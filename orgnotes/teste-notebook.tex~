@@ -1,0 +1,40 @@
+% Created 2021-12-20 seg 15:42
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Nicolas P. Rougier}
+\date{2021-12-19 Sun}
+\title{GNU Emacs Notebooks\\\medskip
+\large \href{https://www.labri.fr/perso/nrougier/}{Nicolas P. Rougier} — Bordeaux, December 2021}
+\hypersetup{
+ pdfauthor={Nicolas P. Rougier},
+ pdftitle={GNU Emacs Notebooks},
+ pdfkeywords={},
+ pdfsubject={A GNU Emacs notebook demonstration},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\url{}
+
+From this simple example, you can start experimenting with literate
+programming in any language or combinations of languages. For
+example, the environment that is declared in the top box of this
+document is automatically generated when the document is exported and it mixes code in Python (to get Python version) and code in Emacs lisp (to get Emacs version). Possibilities are infinite.
+
+\section*{References}
+\label{sec:org2f026de}
+\end{document}

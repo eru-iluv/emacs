@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       8b916358-0f09-4c9c-a99e-ad3ea0f6a6be
+:END:
+#+title: Matemática
+
+Aqui vai ser os nodes de matemática
+
+
+[[id:dcb81889-3f7f-40ce-9670-345e7c8af820][Cáculo]]

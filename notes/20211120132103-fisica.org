@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       e5de566e-f902-4718-b053-b086adc874d2
+:END:
+#+title: Física
+
+Lorem ipsum
+[[id:4f16df7d-a49b-4ed0-a61c-f1d4a6bd592c][Clássica]]

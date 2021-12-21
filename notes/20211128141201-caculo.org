@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       dcb81889-3f7f-40ce-9670-345e7c8af820
+:END:
+#+title: Cáculo
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org_header.org
+
+Aqui ficam todas as (muitas coisas de cálculo)
+
+[[id:89ae350b-df19-40e4-8d6c-002481021d9a][Séries de Fourier]]
+

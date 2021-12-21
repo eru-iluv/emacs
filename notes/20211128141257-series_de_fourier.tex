@@ -1,0 +1,159 @@
+% Created 2021-11-29 seg 17:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{subcaption}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{colortbl,hhline}
+\usepackage[brazil, english]{babel}
+\usepackage[numbers]{natbib}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{chemfig}
+\usepackage[backend=bibtex,bibencoding=ascii,style=chem-angew,citestyle=numeric-comp,sorting=none]{biblatex}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[controls]{animate}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage{empheq}
+\usepackage{indentfirst}
+\usepackage[theorems,skins]{tcolorbox}
+\usepackage[svgnames]{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+\usepackage{physics}
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\DeclareMathOperator{\sen}{sen}
+\usepackage[margin=0.8in]{geometry}
+\titleformat{\section}{\Large\bfseries}{\thesection}{2.5em}{}
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\titleformat{\subsection}{\large\bfseries}{\thesection}{2.5em}{}[\hrule]
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\author{Edgard Macena Cabral}
+\date{\today}
+\title{Séries de Fourier}
+\hypersetup{
+ pdfauthor={Edgard Macena Cabral},
+ pdftitle={Séries de Fourier},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Introdução física pela equação de calor}
+\label{sec:orgfe21547}
+
+Fourier descobriu as séries de Fourier estudando soluções da
+\href{20211128141648-termodinamica.org}{equação do calor} em uma dimensão (numa barra, por exemplo):
+\begin{equation}
+\label{eq:org40a9b74}
+\pdv{u}{t} = k \pdv[2]{u}{x} 
+\end{equation}
+
+(Em que por alguma razão fizeram \(u\) ser a temperatura. Lindo!)
+
+Como é comum em problemas de equações diferenciais, precisamos de mais
+restrições para termos um problema realmente interessante. Podemos supor
+então que ambas as extremidades da barra estão em equilíbrio termico com
+blocos de gelo colocados ao lado, o que podemos escrever como:
+
+\begin{equation}
+\label{eq:orgc5f7ad4}
+\begin{cases}
+  u(x,t) &\ne 0 \\
+  u_t(x.t) &= ku_{xx}(x,t)\\
+  u(0,t)&=u(L,t) = 0 \mbox{ ,  } t > 0
+  \end{cases}
+\end{equation} 
+
+Como consideração final, vamos supor que \(u(x,t)\) possa ser escrito como \(u =
+  F(x)G(t)\). Assim, podemos escrever (\ref{eq:orgc5f7ad4}) como
+
+ \begin{align*}
+ u_{t} = \dot{G}F &= kGF'' = ku_{x x} \quad  \forall x,t \in \mathbb{R}\\
+ &\Rightarrow \frac{1}{k} \frac{G'}{G} = \frac{F''}{F} = \lambda\\
+  F(0)G(t) &= F(L)G(t) = 0\\
+&\Rightarrow F(0) = F(L) = 0
+ \end{align*}
+
+Se você pensar um pouco, a segunda implica que \(\frac{G'}{G}\)
+e \(\frac{F''}{F}\) são constantes, já que elas dependem de variáveis
+diferentes. Daí a última igualdade com \(\lambda\). Além disso, se tívessemos \(G(t) =
+ 0\), \(u(x,t) = 0\), o que é contra nossas condições (\ref{eq:orgc5f7ad4}). Por fim, note que a segunda linha nos dá duas equações
+diferenciais, e última nos dá duas condições de contorno!!
+
+Maluco namoral quanta coisa numa brincadeira dessas. Pelo menos a primeira
+equação diferencial é fácil de resolver
+Para ela, em termos de \(G\), temos
+\begin{align*}
+\frac{\dot{G}(t)}{G(t)} &= k\lambda\\
+\ln'(G(t)) & = k\lambda \\
+\ln(G(t)) &= k\lambda t \Rightarrow (t)G = e^{k\lambda t}   
+\end{align*}
+
+Enfimm, enfim. Vamos resolvendo a segunda equação diferencial analizando caso a caso o
+valor de \(\lambda\) como maior, igual, ou menor que zero.
+
+\subsection{Supondo \(\lambda\) > 0:}
+\label{sec:orgb41e836}
+
+Para a segunda equação:
+ \begin{gather*}
+  \frac{F''}{F} = \lambda\\
+  F'' - \lambda F = 0\\
+  F = \alpha \sinh(x\sqrt{\lambda}) + \beta \cosh(x\sqrt{\lambda} )
+\end{gather*}
+Para a segunda equação, temos ainda que impor as restrições de \(F(0, t)\) e
+\(F(L,t)\). A primeira implica em \(\beta = 0\), a segunda, em \(\alpha = 0\). Mas isso
+nos dá \(u = 0\), então não temos a solução que exigimos.
+
+\subsection{Supondo \(\lambda\) = 0.}
+\label{sec:org873dae9}
+
+Nesse caso
+\[
+   F'' = 0 \Rightarrow (F')' = 0 \Rightarrow F' = \alpha \Rightarrow F = \alpha x + \beta
+   \]
+
+Novamente, as condições de contorno de \(F\) implicam em \(\beta\) = 0 e \(\alpha\) = 0
+respectivamente. Not good
+
+\subsection{Supondo \(\lambda\) < 0}
+\label{sec:org04627f0}
+Nesse caso, vamos tratar de |\(\lambda\)|, okay? Ói:
+ \begin{gather*}
+  \frac{F''}{F} = -|\lambda|\\
+F'' +  |\lambda| F = 0\\
+F = \alpha \sen\qty(x\sqrt{|\lambda|}) + \beta \cos(x\sqrt{|\lambda|} )
+ \end{gather*}
+
+O QUE É LINDO, ESSA DE FATO PODE SER RESOLVIDA PELAS CONDIÇÕES DE CONTORNO
+AAAA !!!1!!11!!
+\end{document}

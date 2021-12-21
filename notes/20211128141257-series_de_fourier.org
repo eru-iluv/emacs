@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       89ae350b-df19-40e4-8d6c-002481021d9a
+:END:
+#+title: Séries de Fourier
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org_header.org
+
+* Introdução física pela equação de calor
+** A temperatura de uma barra insulada fora de suas extremidades
+  Fourier descobriu as séries de Fourier estudando soluções da
+  [[id:fbd4bf04-6624-4f30-925b-3cbf1ce6c81f][equação do calor]] em uma dimensão (numa barra, por exemplo):
+  #+NAME: Equação do calor em uma dimensão
+  \begin{equation}
+  \pdv{u}{t} = k \pdv[2]{u}{x} 
+  \end{equation}
+
+  (Em que por alguma razão fizeram $u$ ser a temperatura. Lindo!)
+
+  Como é comum em problemas de equações diferenciais, precisamos de mais
+  restrições para termos um problema realmente interessante. Podemos supor
+  então que ambas as extremidades da barra estão em equilíbrio termico com
+  blocos de gelo colocados ao lado, o que podemos escrever como:
+  
+  #+NAME: condições de contorno da temperatura na barra
+\begin{equation}
+\begin{cases}
+  u(x,t) &\ne 0 \\
+  u_t(x.t) &= ku_{xx}(x,t)\\
+  u(0,t)&=u(L,t) = 0 \mbox{ ,  } t > 0
+  \end{cases}
+\end{equation} 
+  
+  Como consideração final, vamos supor que $u(x,t)$ possa ser escrito como $u =
+  F(x)G(t)$. Assim, podemos escrever ([[condições de contorno da temperatura na barra]]) como
+
+ \begin{align*}
+ u_{t} = \dot{G}F &= kGF'' = ku_{x x} \quad  \forall x,t \in \mathbb{R}\\
+ &\Rightarrow \frac{1}{k} \frac{G'}{G} = \frac{F''}{F} = \lambda\\
+  F(0)G(t) &= F(L)G(t) = 0\\
+&\Rightarrow F(0) = F(L) = 0
+ \end{align*}
+
+ Se você pensar um pouco, a segunda implica que \( \frac{G'}{G} \)
+ e \(\frac{F''}{F}\) são constantes, já que elas dependem de variáveis
+ diferentes. Daí a última igualdade com $\lambda$. Além disso, se tívessemos $G(t) =
+ 0$, $u(x,t) = 0$, o que é contra nossas condições ([[condições de contorno da
+ temperatura na barra]]). Por fim, note que a segunda linha nos dá duas equações
+ diferenciais, e última nos dá duas condições de contorno!!
+
+ Maluco namoral quanta coisa numa brincadeira dessas. Pelo menos a primeira
+ equação diferencial é fácil de resolver
+ Para ela, em termos de $G$, temos
+   \begin{align*}
+   \frac{\dot{G}(t)}{G(t)} &= k\lambda\\
+   \ln'(G(t)) & = k\lambda \\
+   \ln(G(t)) &= k\lambda t \Rightarrow (t)G = e^{k\lambda t}   
+   \end{align*}
+
+ Enfimm, enfim. Vamos resolvendo a segunda equação diferencial analizando caso a caso o
+ valor de $\lambda$ como maior, igual, ou menor que zero.
+** Estudando as equações de $u$ para cada \lambda
+*** Supondo \lambda > 0:
+  
+ Para a segunda equação:
+ \begin{gather*}
+  \frac{F''}{F} = \lambda\\
+  F'' - \lambda F = 0\\
+  F = \alpha \sinh(x\sqrt{\lambda}) + \beta \cosh(x\sqrt{\lambda} )
+\end{gather*}
+Para a segunda equação, temos ainda que impor as restrições de $F(0, t)$ e
+\(F(L,t)\). A primeira implica em \(\beta = 0\), a segunda, em $\alpha = 0$. Mas isso
+nos dá \(u = 0\), então não temos a solução que exigimos.
+
+*** Supondo \lambda = 0::::
+
+   Nesse caso
+   \[
+   F'' = 0 \Rightarrow (F')' = 0 \Rightarrow F' = \alpha \Rightarrow F = \alpha x + \beta
+   \]
+
+   Novamente, as condições de contorno de $F$ implicam em $\beta$ = 0 e \alpha = 0
+   respectivamente. Not good
+
+*** Supondo \lambda < 0:
+   Nesse caso, vamos tratar de |\lambda|, okay? Ói:
+   \begin{gather*}
+    \frac{F''}{F} = -|\lambda|\\
+  F'' +  |\lambda| F = 0\\
+  F = \alpha \sen\qty(x\sqrt{|\lambda|}) + \beta \cos(x\sqrt{|\lambda|} )
+   \end{gather*}
+   
+   O QUE É LINDO, ESSA DE FATO PODE SER RESOLVIDA PELAS CONDIÇÕES DE CONTORNO
+   AAAA !!!1!!11!!
+
+   Temos de nossas condições que $\beta = 0$, e \(\lambda =
+   \left(\dfrac{n\pi}{L}\right)^{2}\).
+** A temperatura de uma barra insulada em suas extremidades
+   Aqui, consideramos a equação ([[Equação do calor em uma dimensão]]), e a
+   condição
+   \begin{equation}
+   u_x(0,t) = u_x(L,t) = 0 \quad \mbox{e} \quad u(x,t) \ne 0 
+   \end{equation}
+
+   

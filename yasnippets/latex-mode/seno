@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sen
+# key: sen
+# condition: (and (texmathp) 'auto)
+# --
+\sen\qty($1) $0

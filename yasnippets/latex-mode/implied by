@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: implied by
+# key: impliedby
+# condition: (and (texmathp) 'auto)
+# group: math
+# --
+\impliedby $0

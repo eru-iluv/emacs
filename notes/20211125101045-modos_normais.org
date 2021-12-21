@@ -1,0 +1,88 @@
+:PROPERTIES:
+:ID:       8961434a-5a17-4493-adc6-0563939059ba
+:END:
+#+title: Modos normais
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: /home/eddie/.emacs.d/setup-files/org_header.org
+
+
+* Uma introdução
+
+  Antes de estabelecer a base do problema geral de oscilações acopladas,
+  façamos a análise de um exemplo simples.
+  
+  # Fazer um diagrama do exemplo dos modos normais de três molas e dois corpos
+  
+Se \(x_{1}\) e \(x_{2}\) forem o deslocamentos do sistemam, sabemos que
+\[
+T  = \frac{1}{2}M(\dot{x}_{1}^{2} + \dot{x}_{2}^{2})
+\]
+e
+\[
+V = \frac{kx_{1}^{2}}{2} + \frac{kx_{2}^{2}}{2} + \frac{\kappa (x_{1} - x_{2})^2}{2} 
+\]
+
+Pela equações [[id:6eaba9bf-362c-429f-8564-9c850bf55016][Lagrangiana]], temos
+\begin{align}
+  M\ddot{x}_{1} \\
+  M\ddot{x}_{2} + kx_{2} -\kappa (x_{1} - x_{2}) 
+\end{align}
+
+Façamos $x_{j} = \Re(z_{j}) = B_{j}e^{i \omega t}$
+Temos:
+\[\begin{cases}
+(k + \kappa - M \omega^{2})B_{1} - \kappa B_{2} &= 0\\
+-\kappa B_{1} + (k + \kappa - M \omega^{2})B_{2} &= 0
+\end{cases}\]
+Soluções não triviais implicam no determinante desse sistema ser diferente
+de 0. Para isso, temos
+\begin{align}
+  (k + \kappa - M\omega^{2})^{2} -&\kappa^{2} = 0 \Rightarrow \omega^{2} = \frac{k + \kappa \pm \kappa }{M}\\
+  &\omega_{a}^{2} = \frac{k + 2\kappa}{M} \mbox{ e } \omega_{b}^{2} = \frac{k}{M}
+\end{align}
+
+Para $\omega = \omega_b \Rightarrow B_{1} = B_{2}$
+Já para $\omega = \omega_a \Rightarrow B_1 = -B_2$
+
+$$\boxed{ \mbox{Nota: A nossas icógnitas aqui são } B_{a}^{\pm} \mbox{ e } B_{b}^{\pm} }$$
+# Explicar o que é B_a e B_b
+E assim resolvemos nosso problema em termo de $x_{1} \mbox{ e } x_{2}$ e suas
+derivadas.
+ 
+\[\begin{cases}
+  M\ddot{z}_{1} + (k + \kappa)z_{1} - \kappa z_{2} &= 0\\
+  M\ddot{z}_{2} + (k + \kappa)z_{2} - \kappa z_{1} &= 0
+\end{cases}\]
+ 
+Ao somar e subtrair ambas as equações
+
+\(  M(\ddot{z}_{1} \pm \ddot{z}_{2}) + (k + \kappa)(\ddot{z}_{1} \pm \ddot{z}_{2}) - \kappa(z_{2}
+\pm z_{1}) \)
+
+Fazendo
+
+\begin{align}
+\gamma_{a} &\equiv z_{1} - z_{2} \\
+\gamma_{b} &\equiv z_{1} + z_{2}
+\end{align}
+
+Assim:
+\[\begin{cases}
+ M\ddot{\gamma}_{a} + (k + 2\kappa)\gamma_{a} = 0\\
+ M\ddot{\gamma}_{b} + k\gamma_{b} = 0 
+\end{cases}\]
+O que nos dá as equações desacopladas cujas equações são independentes
+
+\begin{align}
+  \gamma_{a} = C_{1}^{+ } e^{i\omega_{a}t} + C_{1}^{-}e^{-i\omega_{a}t}\\ 
+  \gamma_{b} = C_{2}^{+} e^{i\omega_{a}t} + C_{2}^{-}e^{-i\omega_{a}t}
+\end{align}
+
+Embora isso seja /bemmmm/ mais simples, ela tem a desvantagem de não ser a
+solução dos corpos separados. Perceba que $\gamma_{a} = 0$ para qualquer $t$, $x_{1}
+= x_{2}$ e as distâncias entre as massas permanece a mesma, é simétrica. Já para $\gamma_{b} = 0$, $x_{1} = -x_{2}$ e o
+movimento é anti-simétrico.
+
+* Generalizando o problema

@@ -1,0 +1,35 @@
+* Welcome!
+  I'm on the path to make Emacs an general porpuse use. The
+  configurations are based in the tasks that i usually do in Emacs,
+  that is, write code, note taking (in org-roam) and write in LaTeX.
+  The note taking is done using the =org-roam-mode=.
+* Installation
+  First of all, if you already have an configuration you may want to have
+  a backup for it, so run =mv ~/.emacs.d ~/.emacs-bak=, and then:
+
+  =git clone https://github.com/jefter66/dotmacs.git .emacs.d=
+
+  You can find all the packages that i use in this [[./packages.org][file]], i'll try to keep
+  it always updated. 
+
+** Personal configs
+   Some of the configurations depends on the way i organize my system,
+   therefore, if you are interested in using it, you may need to change
+   somethings for it to work.
+   First, a couple of =private= configurations is loaded in the =General
+   config= section, =comment or remove= the line. Also, change the
+   =org-roam-directory= and the =org-roam-templates=, they
+   require some files that i did not made public (yet).
+** Evil mode   
+   If you are an Emacs user, beware that i'm a =evil-mode= user, and this
+   config, like the others, can be easily changed (or removed) in the
+   [[./config.org][config file]].
+* About and references 
+  These are some of the main repositories from where i sometimes found usefull
+  code snippets, some of the snippets i reference in the block of code when using it.
+  - David Wilson:  https://github.com/daviwil/emacs-from-scratch
+  - Nicolas P. Rougier: https://github.com/rougier/nano-emacs
+  - Eric Berquist: https://github.com/berquist/dotfiles
+  - Laura Viglioni: https://github.com/Viglioni/lauremacs 
+  - Ian Y.E. Pan: https://github.com/ianyepan/yay-evil-emacs
+

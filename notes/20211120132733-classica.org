@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       4f16df7d-a49b-4ed0-a61c-f1d4a6bd592c
+:END:
+#+title: Clássica
+
+Aqui tão minhas notas de clássica
+
+Aula de terça: [[https://meet.google.com/wpk-eiaj-vyo]]
+Aula de quinta: [[https://meet.google.com/nrv-djym-ijd]]
+
+[[id:6eaba9bf-362c-429f-8564-9c850bf55016][Lagrangiana]]
+
+[[id:8961434a-5a17-4493-adc6-0563939059ba][Modos normais]]

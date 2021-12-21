@@ -1,0 +1,228 @@
+# -----------------------------------------------------------------------------
+#+STARTUP: overview
+# -----------------------------------------------------------------------------
+# You can click on the buttons below to execute the corresponding command:
+#
+# 1. |SETUP|   : Setup notebook environment (mandatory)
+# 2. |RUN ALL| : Run all notebook code blocks (optional)
+# 3. |EXPORT|  : Export notebook to html (optional)
+#
+# You can run individuals code blocks by clicking on |RUN| or |CALL| buttons 
+# -----------------------------------------------------------------------------
+
+#+begin_abstract
+*Abstract:* Computational notebook is an environment for literate programming, that is, a programming method mixing code and prose. GNU Emacs facilitates the usage of such notebooks by providing users with a clean and legible interface such that people not familiar with code can nonetheless execute the whole document. Emacs notebooks are based on the powerful org-mode that provide all the necessary machinery to mix code and prose, execute code and export the whole document to HTML or PDF.  
+
+*Keywords:* GNU Emacs, org-mode, notebook, literate programming\\
+*Environment:* call_document-info()\\
+*License:* Creative Commons CC-BY 4.0
+#+end_abstract
+
+* Introduction
+
+#+begin_quote
+   Literate programming is a programming paradigm introduced by [[https://en.wikipedia.org/wiki/Donald_Knuth][Donald Knuth]] in which a computer program is given an explanation of its logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which compilable source code can be generated [cite:@Knuth:1984]. The approach is used in scientific computing and in data science routinely for reproducible research and open access purposes. --- [[https://en.wikipedia.org/wiki/Literate_programming][Wikipedia]]   
+#+end_quote
+
+Emacs is an extensible, customizable, self-documenting, real-time display editor whose development started in the mid-seventies. It is still under heavy development thanks to a large community of Emacs hackers. Among the many packages that come with Emacs, there is [[https://orgmode.org/][org-mode]] which is a major mode for keeping notes, authoring documents, computational notebooks, literate programming, maintaining to-do lists, planning projects, and more — in a fast and effective plain text system (orgmode website). The goal of the [[https://github.com/rougier/notebook-mode][notebook mode]] is to provide new users with an easy access to org-mode using a clean and legible interface such that people not familiar with GNU Emacs can nonetheless execute the whole document (using the button at the top) or run individual code cells using the run button in the margin as illustrated on figure [[fig:teaser]]. The populated notebook can then be exported to HTML using the export button at the top. The HTML document you're currently reading is actually an export of the file [[file:notebook.org][notebook.org]].
+
+# ----------------------------------------------------------------------------
+#+begin_sidefig
+#+name: fig:teaser
+#+caption: *The org notebook as rendered inside GNU Emacs.* [[https://www.gnu.org/software/emacs/][GNU Emacs]] can be hacked such as to offer a clean and legible interface for the notebook that is is actually a regular [[https://orgmode.org/][org-mode]] document. This means a user can write and run the notebook fully inside Emacs, without the need to install any extra tools (but the different languages used inside the notebook, of course). In other words, everything is handled by Emacs. The advantage of the org notebook is that you can have block of code in any language and even mix them. This actually what have been used to display the enviroment in the abstract box, mixing Emacs lisp and Python. The theme used in the screenshot is [[https://github.com/rougier/nano-theme][NΛNO Theme]] (available on [[https://elpa.gnu.org/][ELPA]]) and the font is [[https://fonts.google.com/specimen/Roboto+Mono][Roboto Mono]]. See [cite:@Rougier:2020] for further details.
+[[file:notebook.png]]
+#+end_sidefig
+# ----------------------------------------------------------------------------
+
+* Using the notebook
+
+Since a notebook is a regular org-mode document, this means you can use any org command to execute individual code blocks or to export the notebook to HTML or PDF. Let's now experiment a bit with the notebook and for that, we'll use the Python language and starts with the mandatory "Hello world" program (see listing [[src:hello]] and the corresponding output).
+
+# ----------------------------------------------------------------------------
+#+name: src:hello
+#+caption: Hello world in Python from the org notebook.
+#+begin_src python :results output :exports both
+print("Hello world!")
+#+end_src
+#+results: src:hello
+: Hello world!
+# ----------------------------------------------------------------------------
+
+The inline equivalent would result in: src_python{return "Hello world!"}
+
+What is more interesting is the ability for the notebook to produce figures from code and to associate a caption and a label such that they can be inserted directly into the document and referenced elsewhere in the text. Let's try that with Python and matplotlib in order to produce the figure [[fig:oscillations]] below.
+
+# ----------------------------------------------------------------------------
+#+name: fig:oscillations
+#+header: :var filename = "oscillations.png"
+#+begin_src python :results value file :exports results
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(8, 1))
+ax = fig.add_axes([0,0,1,1], frameon=False)
+ax.axis("off")
+X = np.linspace(-10*np.pi, 10*np.pi, 500)
+ax.plot(X, np.sin(X)/X)
+ax.set_xlim(X.min(), X.max())
+
+plt.savefig(filename)
+return filename
+#+end_src
+#+label: fig:oscillations
+#+caption: Damped oscillations using $y=\frac{sin(x)}{x}$
+#+results: fig:oscillations
+[[file:oscillations.png]]
+# ----------------------------------------------------------------------------
+
+From this simple example, you can start experimenting with literate
+programming in any language or combinations of languages. For
+example, the environment that is declared in the top box of this
+document is automatically generated when the document is exported and it mixes code in Python (to get Python version) and code in Emacs lisp (to get Emacs version). Possibilities are infinite.
+
+* References
+
+# ----------------------------------------------------------------------------
+#+cite_export: csl acm-siggraph.csl
+#+bibliography: notebook.bib
+#+print_bibliography:
+# ----------------------------------------------------------------------------
+
+* Notebook configuration :noexport:
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+This section is used for configuring various settings in the notebook appearance as well as defining various options for the export in HTML or PDF formats. You can change any of these settings.
+
+** Document information
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+TITLE:        GNU Emacs Notebooks
+#+SUBTITLE:     [[https://www.labri.fr/perso/nrougier/][Nicolas P. Rougier]] — Bordeaux, December 2021
+#+AUTHOR:       Nicolas P. Rougier
+#+EMAIL:        nicolas.rougier@inria.fr
+#+DATE:         2021-12-19 Sun
+#+DESCRIPTION:  A GNU Emacs notebook demonstration
+#+OPTIONS:      toc:nil   
+
+** HTML export configuration
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+OPTIONS:   num:nil
+#+OPTIONS:   html-style:nil
+#+OPTIONS:   html-scripts:nil 
+#+OPTIONS:   html-postamble:nil
+#+OPTIONS:   broken-links:mark
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="notebook.css" />
+
+** PDF export configuration
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+OPTIONS:
+
+** Code snippets
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+*** Notebook setup :lisp:
+
+#+name: setup
+#+header:
+#+begin_src emacs-lisp :results none :exports none :eval no-export
+(setq org-cite-csl-styles-dir ".")
+(setq org-babel-python-command "/opt/anaconda3/bin/python")
+(require 'ob-python)
+(require 'oc-csl)
+nil
+#+end_src
+
+*** Notebook run :lisp:
+
+#+name: run
+#+header: :var scope="all"
+#+begin_src emacs-lisp :results none :exports none :eval never
+(org-babel-execute-buffer)
+nil
+#+end_src
+
+*** Notebook export :lisp:
+
+#+name: export
+#+header: :var target="html"
+#+begin_src emacs-lisp :results none :exports none :eval never
+(cond (((string= target "html")   (org-html-export-to-html))
+       ((string= target "pdf")    (org-latex-export-to-pdf))
+       ((string= target "tex")    (org-latex-export-to-latex))
+       ((string= target "latex")  (org-latex-export-to-latex))
+       (t  (message (format "Unknow backend (%s) for export" target)))))
+#+end_src
+
+*** Notebook information :lisp:
+
+#+name: document-info
+#+header: :var python=python-version emacs=emacs-version org=org-version
+#+begin_src python :results raw :exports results
+return f"{emacs}, {org} & {python}"
+#+end_src
+#+RESULTS: document-info
+
+*** Emacs version :lisp:
+
+#+name: emacs-version
+#+begin_src emacs-lisp :export none :results raw
+(format "[[https://www.gnu.org/software/emacs/][Emacs]] %d.%d"
+        emacs-major-version emacs-minor-version)
+#+end_src
+#+RESULTS: emacs-version
+
+*** Org mode version :lisp:
+
+#+name: org-version
+#+begin_src emacs-lisp :export none :results raw
+(format "[[https://www.gnu.org/software/emacs/][Org mode]] %s"
+        (org-version nil nil))
+#+end_src
+#+RESULTS: org-version
+
+*** Python version :python:
+
+#+name: python-version
+#+begin_src python :export none :results raw
+import platform
+version = platform.python_version()
+return f"[[https://www.python.org/][Python]] {version}"
+#+end_src
+
+*** Matplotlib figure preparation :python:
+
+#+name: pyfig-pre
+#+header: :var width=8 height=1
+#+begin_src python :results file :exports none 
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(width,height))
+ax = fig.add_axes([0,0,1,1], frameon=False)
+ax.axis("off")
+#+end_src
+
+*** Matplotlib figure finalization :python:
+
+#+name: pyfig-post
+#+header: :var filename=""
+#+begin_src python :results file :exports none
+if filename:
+    plt.savefig(filename, dpi=300)
+    return filename
+return ""
+#+end_src
+

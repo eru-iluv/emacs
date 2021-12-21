@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: header
+# key: <tt
+# --
+
+#+AUTHOR: Edgard Macena Cabral
+#+EMAIL: emc2rcf@gmail.com
+#+SETUPFILE: ~/.emacs.d/setup-files/org-html-themes/org/theme-readtheorg-local.setup
+#+SETUPFILE: ~/.emacs.d/setup-files/org_header.org
+
+$0

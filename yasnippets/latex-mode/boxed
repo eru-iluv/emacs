@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: boxed
+# condition: 'auto
+# key: $b
+# group: math
+# --
+
+$$\boxed{$1 $$

@@ -1,0 +1,216 @@
+% Created 2021-11-23 ter 17:38
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{blindtext}
+\usepackage{subcaption}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multicol}
+\usepackage{gensymb}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{colortbl,hhline}
+\usepackage[brazil, english]{babel}
+\usepackage[numbers]{natbib}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{chemfig}
+\usepackage[backend=bibtex,bibencoding=ascii,style=chem-angew,citestyle=numeric-comp,sorting=none]{biblatex}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[controls]{animate}
+\usepackage{color}
+\usepackage{epigraph}
+\usepackage{empheq}
+\usepackage{indentfirst}
+\usepackage[theorems,skins]{tcolorbox}
+\usepackage[svgnames]{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+\usepackage{physics}
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\DeclareMathOperator{\sen}{sen}
+\usepackage[margin=0.8in]{geometry}
+\titleformat{\section}{\Large\bfseries}{\thesection}{2.5em}{}
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\titleformat{\subsection}{\large\bfseries}{\thesection}{2.5em}{}[\hrule]
+\titlespacing{\section}{0em}{1.5em}{1.5em}
+\author{Edgard Macena Cabral}
+\date{\today}
+\title{Lagrangiana}
+\hypersetup{
+ pdfauthor={Edgard Macena Cabral},
+ pdftitle={Lagrangiana},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+
+
+\section{Resumo}
+\label{sec:orgab3b1c9}
+Vimos nas aulas anteriores que a análise do princío de Hamilton fornecia as equações de movimento em qualquer coordenadas
+
+Vimos ainda que para a equação
+
+\begin{equation}
+ L = T - V
+\end{equation}
+
+Obtemos, através de Euler-Lagrange
+\begin{equation}\label{eq:Euler-Lagrange}
+\label{eq:orgcc08765}
+\frac{dL}{d\mathbf{r}} - \frac{d}{dt}\left(\dfrac{dL}{d\mathbf{\dot{r}}}\right) = 0
+\end{equation}
+
+Nos fornece as equações do momento e força generalizados (angular e linear)
+Façamos um resumo sobre quando devemos usar multiplicadores de Lagrange no
+formalismo Lagrangiano
+
+O ponto de partida deve ser observar que o formalismo de lagrange está
+baseado no princípio de Hamilton. Por sua vez, vimos que se não há vínculos
+entre as coordenadas e o movimento, podemos aplicar de maneira simples Euler
+Lagrange. Se houver vínculos
+
+Portano, vemos que o uso de multiplicadores de Lagrange depende do funcional
+L (Lagrangiano) ser função de variáveis que tem vínculos entre si.
+
+Podemos ainda generalizar o que vimos até agora para \emph{N} párticulas
+
+Tendo a revisão feita, vamos partir pra generalização para qualquer
+coordenada.
+
+
+\section{Coordenadas generalizadas e graus de liberdade}
+\label{sec:org89ff88e}
+Dizemos que \(q_1, q_2, ..., q_n\) é um conjunto de \emph{coordenadas generalizadas} se
+a posição de toda partícula do sistema é uma função dessas variáveis
+
+\begin{equation}\label{eq:coordenadas generalizadas}
+\mathbf{r_i} = \mathbf{r_i}(q_1, q_2, ..., q_n)
+\end{equation}
+
+em que \(\mathbf{r_i}\) é a i-ésima coordenada
+
+\begin{itemize}
+\item Pendulo simples
+\(\mathbf{r} = \mathbf{r}(x,y)\)
+\(\mathbf{r} = \mathbf{r}(\theta)\)
+
+São ambas coordenadas generalizadas de \(\mathbf{r}\)
+\end{itemize}
+
+O número de graus de liberdade de um sistema é dado pelo número de
+coordenadas que podem variar independentemente
+
+Se o número de coordenadas generalizadas é igual ao de graus de liberdade, o
+conjunto é chamado de próprio
+\subsection{Outras definições}
+\label{sec:orgef04453}
+\begin{itemize}
+\item Sistema holonômico:
+Sistema no qual as equações de vínculo podem ser usadas pra eliminar
+algumas coordenadas, reduzindo-se o número total de coordenadas. Vinculos
+do tipo \(g(\{q_i\},t = 0)\) são holonômicos
+\item Sistema forçado
+Se a eliminação de coordenadas introduzir funções explícitoas do tempo, o
+sistema é dito forçado, se os vínculos são tais que que \(\mathbf{r}\)
+não depende explicitamente de \(t\), o sistema é dito \textbf{natural}
+
+Se o sistema for natural, \(T\) é a soma de das energias cinéticas devido as
+energias cinéticas generalizadas, apenas com termos quadráticos.
+\end{itemize}
+
+Vamos agora determinar as equações de movimento em termos de coordenadas
+generalizadas.
+
+Se \(\{q_i\}\) for um conjunto próprio, e o sistema tiver \(s\) \uline{graus de liberdade}
+
+  \begin{equation}
+equação
+  \end{equation}
+
+Obtivemos tal resultado considerando:
+\begin{enumerate}
+\item As forças consideradas até agora são todas conservativas ou de vínculo
+\item Os vínculos usados até aqui são todos holonômicos
+\end{enumerate}
+
+\section{Leis de conservação}
+\label{sec:org891f687}
+Observe que se uma coordenada própria não aparecer explicitamente na
+lagrangiana, equação para essa coordenada sera
+
+  \begin{equation}
+\frac{\partial L}{\partial q_{\alpha}} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}} \right) = 0
+  \end{equation}
+
+Temos então
+ \begin{equation}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{\alpha}}\right) = 0
+ \end{equation}
+Que é uma constante do movimento
+
+\section{Forças não inerciais}
+\label{sec:orge392d5a}
+Até o momento só trabalhamos com forças que fossem derivadas de funções
+energias potenciais, mas podemos fazer uma análise para casos em que a força
+generalizadas podem ser escritas como:
+$$\boxed{F_{\alpha} = -\pdv{U}{q_{\alpha }} + \dv{t}(\pdv{U}{q_{\alpha}})}$$
+Nesses casos, podemos definir \(L = T - U\), onde \(U\) é a "energia potencial
+efetiva do sistema". Nesse caso, a Lagrangiana pode ser escrita da equação de
+Lagrange.
+
+Consideremos um sistema de 1 partícula sujeita a uma força resultante
+\(\mathbf{F\), cuja posição possa ser escrita em termos do conjunto
+própri de coordenadas generalizadas \((q_{1},q_{2}, q_{3})\).
+
+$$I = \int^{t_{2}}_{t_{1}}T\mathrm{d}x = \int^{t_{2}}_{t_{1}}T(q_{\alpha}, \dot{q}_{\alpha}, t)\mathrm{d}x $$
+
+Note que \(\delta T = \delta\qty[\frac{1}{2}(\dot{x}^{2}+\dot{y}^{2} + \dot{z}^{2})]\)
+
+podemos integrar por partes
+
+\begin{equation}
+\delta I = m(\dot{x}\delta x + \dot{y}\delta y + \dot{z}\delta z)\eval^{t_{2}}_{t_{1}}- \int^{ t_{2} }_{ t_{1} }m(\ddot{x}\delta x + \ddot{y}\delta y + \ddot{z}\delta z)\mathrm{d}t 
+\end{equation}
+
+Note que o termo da derivada corresponde a integral do tabalho virtual (que é o
+trabalho para levar umaa partícula de um ponto a outro em um tempo
+instântaneo).recentlyused:/locations
+
+$$\delta I = - \int^{ t_{2} }_{ t_{1} }\delta W \mathrm{d}t$$
+
+Podemos escrever \(\delta W = \sum_{\alpha=1}^{3}F_{\alpha}\delta q_{\alpha}\) (Essa é a definição de
+\(F_{\alpha}\)).
+
+Sabemos ainda que \ref{eq:orgcc08765}
+
+$$\boxed{\delta I = \sum^{3}_{\alpha = 1}\pdv{ L }{ q_{\alpha} } - \dv{t}\left(\pdv{ L }{ \dot{q}_{\alpha} }\right)}$$
+
+
+Unindo os dois, temos pra cada termo \(\alpha\)
+\end{document}

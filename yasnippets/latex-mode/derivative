@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# condition: (and (texmathp) 'auto)
+# name: derivative
+# group: math
+# key: ddt
+# --
+
+\dv{ $1 }{ ${2:x} } $0

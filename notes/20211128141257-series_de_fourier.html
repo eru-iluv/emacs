@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-28 dom 18:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Séries de Fourier</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Edgard Macena Cabral" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/readtheorg.css"/>
+<script type="text/javascript" src="src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Séries de Fourier</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org68d1585">1. Introdução física pela equação de calor</a>
+<ul>
+<li><a href="#org4e83161">1.1. Supondo &lambda; &gt; 0:</a></li>
+<li><a href="#org66cb40a">1.2. Supondo &lambda; = 0.</a></li>
+<li><a href="#org8556ed6">1.3. Supondo &lambda; &lt; 0</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org68d1585" class="outline-2">
+<h2 id="org68d1585"><span class="section-number-2">1</span> Introdução física pela equação de calor</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Fourier descobriu as séries de Fourier estudando soluções da
+<a href="20211128141648-termodinamica.html#ID-fbd4bf04-6624-4f30-925b-3cbf1ce6c81f">equação do calor</a> em uma dimensão (numa barra, por exemplo):
+</p>
+\begin{equation}
+\label{orgc774850}
+\pdv{u}{t} = k \pdv[2]{u}{x} 
+\end{equation}
+
+<p>
+(Em que por alguma razão fizeram \(u\) ser a temperatura. Lindo!)
+</p>
+
+<p>
+Como é comum em problemas de equações diferenciais, precisamos de mais
+restrições para termos um problema realmente interessante. Podemos supor
+então que ambas as extremidades da barra estão em equilíbrio termico com
+blocos de gelo colocados ao lado, o que podemos escrever como:
+</p>
+
+\begin{equation}
+\label{orgd9c17a4}
+\begin{cases}
+  u(x,t) &\ne 0 \\
+  u_t(x.t) &= ku_{xx}(x,t)\\
+  u(0,t)&=u(L,t) = 0 \mbox{ ,  } t > 0
+  \end{cases}
+\end{equation} 
+
+<p>
+Como consideração final, vamos supor que \(u(x,t)\) possa ser escrito como \(u =
+  F(x)G(t)\). Assim, podemos escrever (\eqref{orgd9c17a4}) como
+</p>
+
+ \begin{align*}
+ u_{t} = \dot{G}F &= kGF'' = ku_{x x} \quad  \forall x,t \in \mathbb{R}\\
+ &\Rightarrow \frac{1}{k} \frac{G'}{G} = \frac{F''}{F} = \lambda\\
+  F(0)G(t) &= F(L)G(t) = 0\\
+&\Rightarrow F(0) = F(L) = 0
+ \end{align*}
+
+<p>
+Se você pensar um pouco, a segunda implica que \( \frac{G'}{G} \)
+e \(\frac{F''}{F}\) são constantes, já que elas dependem de variáveis
+diferentes. Daí a última igualdade com \(\lambda\). Além disso, se tívessemos \(G(t) =
+ 0\), \(u(x,t) = 0\), o que é contra nossas condições (\eqref{orgd9c17a4}). Por fim, note que a segunda linha nos dá duas equações
+diferenciais, e última nos dá duas condições de contorno!!
+</p>
+
+<p>
+Maluco namoral quanta coisa numa brincadeira dessas. Pelo menos a primeira
+equação diferencial é fácil de resolver
+Para ela, em termos de \(G\), temos
+</p>
+\begin{align*}
+\frac{\dot{G}(t)}{G(t)} &= k\lambda\\
+\ln'(G(t)) & = k\lambda \\
+\ln(G(t)) &= k\lambda t \Rightarrow (t)G = e^{k\lambda t}   
+\end{align*}
+
+<p>
+Enfimm, enfim. Vamos resolvendo a segunda equação diferencial analizando caso a caso o
+valor de \(\lambda\) como maior, igual, ou menor que zero.
+</p>
+</div>
+
+<div id="outline-container-org4e83161" class="outline-3">
+<h3 id="org4e83161"><span class="section-number-3">1.1</span> Supondo &lambda; &gt; 0:</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Para a segunda equação:
+</p>
+ \begin{gather*}
+  \frac{F''}{F} = \lambda\\
+  F'' - \lambda F = 0\\
+  F = \alpha \sinh(x\sqrt{\lambda}) + \beta \cosh(x\sqrt{\lambda} )
+\end{gather*}
+<p>
+Para a segunda equação, temos ainda que impor as restrições de \(F(0, t)\) e
+\(F(L,t)\). A primeira implica em \(\beta = 0\), a segunda, em \(\alpha = 0\). Mas isso
+nos dá \(u = 0\), então não temos a solução que exigimos.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org66cb40a" class="outline-3">
+<h3 id="org66cb40a"><span class="section-number-3">1.2</span> Supondo &lambda; = 0.</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Nesse caso
+\[
+   F'' = 0 \Rightarrow (F')' = 0 \Rightarrow F' = \alpha \Rightarrow F = \alpha x + \beta
+   \]
+</p>
+
+<p>
+Novamente, as condições de contorno de \(F\) implicam em \(\beta\) = 0 e &alpha; = 0
+respectivamente. Not good
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8556ed6" class="outline-3">
+<h3 id="org8556ed6"><span class="section-number-3">1.3</span> Supondo &lambda; &lt; 0</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Nesse caso, vamos tratar de |&lambda;|, okay? Ói:
+</p>
+ \begin{gather*}
+  \frac{F''}{F} = -|\lambda|\\
+F'' +  |\lambda| F = 0\\
+F = \alpha \sen\qty(x\sqrt{|\lambda|}) + \beta \cos(x\sqrt{|\lambda|} )
+ \end{gather*}
+
+<p>
+O QUE É LINDO, ESSA DE FATO PODE SER RESOLVIDA PELAS CONDIÇÕES DE CONTORNO
+AAAA !!!1!!11!!
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Edgard Macena Cabral</p>
+<p class="date">Created: 2021-11-28 dom 18:09</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

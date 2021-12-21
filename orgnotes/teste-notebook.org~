@@ -1,0 +1,174 @@
+# ----------------------------------------------------------------------------
+#+name: fig:oscillations
+#+header: :var filename = "oscillations.png"
+#+begin_src python :results value file :exports results
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(8, 1))
+ax = fig.add_axes([0,0,1,1], frameon=False)
+ax.axis("off")
+X = np.linspace(-10*np.pi, 10*np.pi, 500)
+ax.plot(X, np.sin(X)/X)
+ax.set_xlim(X.min(), X.max())
+
+plt.savefig(oscillations.png)
+return filename
+#+end_src
+#+label: fig:oscillations
+#+caption: Damped oscillations using $y=\frac{sin(x)}{x}$
+#+results: fig:oscillations
+[[file:oscillations.png]]
+
+# ----------------------------------------------------------------------------
+
+From this simple example, you can start experimenting with literate
+programming in any language or combinations of languages. For
+example, the environment that is declared in the top box of this
+document is automatically generated when the document is exported and it mixes code in Python (to get Python version) and code in Emacs lisp (to get Emacs version). Possibilities are infinite.
+
+* References
+
+# ----------------------------------------------------------------------------
+#+cite_export: csl acm-siggraph.csl
+#+bibliography: notebook.bib
+#+print_bibliography:
+# ----------------------------------------------------------------------------
+
+* Notebook configuration :noexport:
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+This section is used for configuring various settings in the notebook appearance as well as defining various options for the export in HTML or PDF formats. You can change any of these settings.
+
+** Document information
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+TITLE:        GNU Emacs Notebooks
+#+SUBTITLE:     [[https://www.labri.fr/perso/nrougier/][Nicolas P. Rougier]] — Bordeaux, December 2021
+#+AUTHOR:       Nicolas P. Rougier
+#+EMAIL:        nicolas.rougier@inria.fr
+#+DATE:         2021-12-19 Sun
+#+DESCRIPTION:  A GNU Emacs notebook demonstration
+#+OPTIONS:      toc:nil   
+
+** HTML export configuration
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+OPTIONS:   num:nil
+#+OPTIONS:   html-style:nil
+#+OPTIONS:   html-scripts:nil 
+#+OPTIONS:   html-postamble:nil
+#+OPTIONS:   broken-links:mark
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="notebook.css" />
+
+** PDF export configuration
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+#+OPTIONS:
+
+** Code snippets
+:PROPERTIES:
+:VISIBILITY: folded
+:END:
+
+*** Notebook setup :lisp:
+
+#+name: setup
+#+header:
+#+begin_src emacs-lisp :results none :exports none :eval no-export
+(setq org-cite-csl-styles-dir ".")
+(setq org-babel-python-command "/opt/anaconda3/bin/python")
+(require 'ob-python)
+(require 'oc-csl)
+nil
+#+end_src
+
+*** Notebook run :lisp:
+
+#+name: run
+#+header: :var scope="all"
+#+begin_src emacs-lisp :results none :exports none :eval never
+(org-babel-execute-buffer)
+nil
+#+end_src
+
+*** Notebook export :lisp:
+
+#+name: export
+#+header: :var target="html"
+#+begin_src emacs-lisp :results none :exports none :eval never
+(cond (((string= target "html")   (org-html-export-to-html))
+       ((string= target "pdf")    (org-latex-export-to-pdf))
+       ((string= target "tex")    (org-latex-export-to-latex))
+       ((string= target "latex")  (org-latex-export-to-latex))
+       (t  (message (format "Unknow backend (%s) for export" target)))))
+#+end_src
+
+*** Notebook information :lisp:
+
+#+name: document-info
+#+header: :var python=python-version emacs=emacs-version org=org-version
+#+begin_src python :results raw :exports results
+return f"{emacs}, {org} & {python}"
+#+end_src
+#+RESULTS: document-info
+
+*** Emacs version :lisp:
+
+#+name: emacs-version
+#+begin_src emacs-lisp :export none :results raw
+(format "[[https://www.gnu.org/software/emacs/][Emacs]] %d.%d"
+        emacs-major-version emacs-minor-version)
+#+end_src
+#+RESULTS: emacs-version
+
+*** Org mode version :lisp:
+
+#+name: org-version
+#+begin_src emacs-lisp :export none :results raw
+(format "[[https://www.gnu.org/software/emacs/][Org mode]] %s"
+        (org-version nil nil))
+#+end_src
+#+RESULTS: org-version
+
+*** Python version :python:
+
+#+name: python-version
+#+begin_src python :export none :results raw
+import platform
+version = platform.python_version()
+return f"[[https://www.python.org/][Python]] {version}"
+#+end_src
+
+*** Matplotlib figure preparation :python:
+
+#+name: pyfig-pre
+#+header: :var width=8 height=1
+#+begin_src python :results file :exports none 
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(width,height))
+ax = fig.add_axes([0,0,1,1], frameon=False)
+ax.axis("off")
+#+end_src
+
+*** Matplotlib figure finalization :python:
+
+#+name: pyfig-post
+#+header: :var filename=""
+#+begin_src python :results file :exports none
+if filename:
+    plt.savefig(filename, dpi=300)
+    return filename
+return ""
+#+end_src

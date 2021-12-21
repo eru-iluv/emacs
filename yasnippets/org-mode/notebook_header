@@ -1,0 +1,164 @@
+# -*- mode: snippet -*-
+# name: notebook header
+# key: <note
+# --
+
+# -----------------------------------------------------------------------------
+#+STARTUP: overview
+# -----------------------------------------------------------------------------
+# You can click on the buttons below to execute the corresponding command:
+#
+# 1. |SETUP|   : Setup notebook environment (mandatory)
+# 2. |RUN ALL| : Run all notebook code blocks (optional)
+# 3. |EXPORT|  : Export notebook to html (optional)
+#
+# You can run individuals code blocks by clicking on |RUN| or |CALL| buttons 
+# -----------------------------------------------------------------------------
+
+
+#+begin_abstract
+*Resumo:* resumo \\\\
+*Environment:* call_document-info()\\\\
+*Licença:* Creative Commons CC-BY 4.0
+#+end_abstract
+
+
+* Notebook configuration :noexport:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+
+  This section is used for configuring various settings in the notebook appearance as well as defining various options for the export in HTML or PDF formats. You can change any of these settings.
+
+** Document information
+   :PROPERTIES:
+   :VISIBILITY: folded
+   :END:
+
+   #+TITLE:        Notebook
+   #+SUBTITLE:     Edgard Macena Cabral — São Carlos, Data
+   #+AUTHOR:       Edgard Macena
+   #+EMAIL:        edgardmacena@usp.br 
+   #+DATE:         Data2021
+   #+DESCRIPTION:  
+   #+OPTIONS:      toc:nil   
+
+** HTML export configuration
+   :PROPERTIES:
+   :VISIBILITY: folded
+   :END:
+
+   #+OPTIONS:   num:nil
+   #+OPTIONS:   html-style:nil
+   #+OPTIONS:   html-scripts:nil 
+   #+OPTIONS:   html-postamble:nil
+   #+OPTIONS:   broken-links:mark
+   #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/home/edgard/Dropbox/.emacs.d/setup-files/notebook/notebook.css" />
+** PDF export configuration
+   :PROPERTIES:
+   :VISIBILITY: folded
+   :END:
+
+   #+OPTIONS:
+
+   #+SETUPFILE: ~/.emacs.d/setup-files/org_header.org
+
+** Code snippets
+   :PROPERTIES:
+   :VISIBILITY: folded
+   :END:
+
+*** Notebook setup :lisp:
+
+    #+name: setup
+    #+header:
+    #+begin_src emacs-lisp :results none :exports none :eval no-export
+      (setq org-cite-csl-styles-dir ".")
+      (setq org-babel-python-command "/opt/anaconda3/bin/python")
+      (require 'ob-python)
+      (require 'oc-csl)
+      nil
+      #+end_src
+
+*** Notebook run :lisp:
+
+    #+name: run
+    #+header: :var scope="all"
+    #+begin_src emacs-lisp :results none :exports none :eval never
+      (org-babel-execute-buffer)
+      nil
+      #+end_src
+
+*** Notebook export :lisp:
+
+    #+name: export
+    #+header: :var target="html"
+    #+begin_src emacs-lisp :results none :exports none :eval never
+      (cond (((string= target "html")   (org-html-export-to-html))
+             ((string= target "pdf")    (org-latex-export-to-pdf))
+             ((string= target "tex")    (org-latex-export-to-latex))
+             ((string= target "latex")  (org-latex-export-to-latex))
+             (t  (message (format "Unknow backend (%s) for export" target)))))
+             #+end_src
+
+*** Notebook information :lisp:
+
+    #+name: document-info
+    #+header: :var python=python-version emacs=emacs-version org=org-version
+    #+begin_src python :results raw :exports results
+      return f"{emacs}, {org} & {python}"
+      #+end_src
+    #+RESULTS: document-info
+
+*** Emacs version :lisp:
+
+    #+name: emacs-version
+    #+begin_src emacs-lisp :export none :results raw
+      (format "[[https://www.gnu.org/software/emacs/][Emacs]] %d.%d"
+              emacs-major-version emacs-minor-version)
+              #+end_src
+    #+RESULTS: emacs-version
+
+*** Org mode version :lisp:
+
+    #+name: org-version
+    #+begin_src emacs-lisp :export none :results raw
+      (format "[[https://www.gnu.org/software/emacs/][Org mode]] %s"
+              (org-version nil nil))
+              #+end_src
+    #+RESULTS: org-version
+
+*** Python version :python:
+
+    #+name: python-version
+    #+begin_src python :export none :results raw
+      import platform
+      version = platform.python_version()
+      return f"[[https://www.python.org/][Python]] {version}"
+      #+end_src
+
+*** Matplotlib figure preparation :python:
+
+    #+name: pyfig-pre
+    #+header: :var width=8 height=1
+    #+begin_src python :results file :exports none 
+      import numpy as np
+      import matplotlib
+      matplotlib.use('Agg')
+      import matplotlib.pyplot as plt
+      fig = plt.figure(figsize=(width,height))
+      ax = fig.add_axes([0,0,1,1], frameon=False)
+      ax.axis("off")
+      #+end_src
+
+*** Matplotlib figure finalization :python:
+
+    #+name: pyfig-post
+    #+header: :var filename=""
+    #+begin_src python :results file :exports none
+      if filename:
+          plt.savefig(filename, dpi=300)
+          return filename
+      return ""
+      #+end_src
+$0
