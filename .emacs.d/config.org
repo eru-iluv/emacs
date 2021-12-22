@@ -53,7 +53,7 @@ stuff. I also have a separated repository only for my snippets (i use the
   #+begin_src emacs-lisp
     (org-babel-load-file (expand-file-name "~/.emacs.d/latex/latex.org"))
   #+end_src
-* Multi-term 
+* Multi-term
   #+begin_src emacs-lisp
     (use-package multi-term :ensure t)
     (setq multi-term-program "/bin/bash")
@@ -79,6 +79,7 @@ stuff. I also have a separated repository only for my snippets (i use the
   (setq ivy-display-style 'fancy)
 #+end_src
 * Which-key
+  
 #+begin_src emacs-lisp
  (use-package which-key
    :ensure t
