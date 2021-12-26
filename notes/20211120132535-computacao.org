@@ -12,6 +12,4 @@
 Aqui vai ser os nodes de computação
 
  
-\( \sen\qty(\dfrac{10}{10})  \) 
-\(\arccos() \cos() \tan()  \int^{b}_{a}f(x)\mathrm{d}x 
-\) 
+[[id:ec63ce5b-0d06-4d0a-ba88-ce715fb8457b][Relatório I]]

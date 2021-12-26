@@ -11,7 +11,7 @@
 (setq-default tab-width 4)
 (setq confirm-kill-processes nil)
 ;(setq-default truncate-lines t)
-;(setq-default fill-column 80)
+(setq-default fill-column 80)
 (global-visual-line-mode t)
 (setq-default cursor-type 'square)
 (defalias 'yes-or-no-p 'y-or-n-p)

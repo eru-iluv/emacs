@@ -44,8 +44,10 @@ Since a notebook is a regular org-mode document, this means you can use any org 
 #+begin_src python :results output :exports both
 print("Hello world!")
 #+end_src
-#+results: src:hello
+
+#+RESULTS: src:hello
 : Hello world!
+
 # ----------------------------------------------------------------------------
 
 The inline equivalent would result in: src_python{return "Hello world!"}
@@ -225,4 +227,7 @@ if filename:
     return filename
 return ""
 #+end_src
+
+#+RESULTS: pyfig-post
+[[file:]]
 
